@@ -1,40 +1,40 @@
 const User = require('../models/users');
 
 //get all users
-router.get('/', async (req, res) => {
+async function index(req, res) {
     try {
 
     } catch (err) {
 
     }
-});
+};
 
 //get user by id
-router.get('/:id', async (req, res) => {
+async function show(req, res) {
     try {
 
     } catch (err) {
 
     }
-});
+};
 
 //update points
-router.patch('/:id', async (req, res) => {
+async function updatePoints(req, res){
     try {
 
     } catch (err) {
 
     }
-});
+};
 
 //update wins
-router.patch('/:id', async (req, res) => {
+async function updateWins(req, res) {
     try {
 
     } catch (err) {
 
     }
-});
+};
 
 module.exports = router;
 
