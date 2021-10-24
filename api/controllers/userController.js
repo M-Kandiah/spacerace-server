@@ -1,7 +1,3 @@
-const express = require('express');
-const router = express.Router();
-const { init } = require('../dbConfig');
-
 const User = require('../models/users');
 
 //get all users
