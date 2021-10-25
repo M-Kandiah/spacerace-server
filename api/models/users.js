@@ -1,5 +1,6 @@
 const { init } = require('../dbConfig');
 const { ObjectId } = require('mongodb');
+const Usermon = require("mongoose")
 
 class User {
     // can change, not too sure about password
@@ -42,20 +43,23 @@ class User {
     }
 
     //creating user, prob won't work since idr how it works
-    static create(username, password) {
-        return new Promise(async (resolve, reject) => {
-            try {
-                const db = await init();
-                await db.collection('users').insertOne({username: username, passwordHash: password, points: 0, wins: 0});
-                let data = await db.collection('users').find({username})
-                let newUser = new User(data);
-                resolve(newUser);
-            } catch (err) {
-                console.warn(err);
-                reject('error creating user');
-            }
-        });
-    }
+
+    // static create(username, password) {
+    //     return new Promise(async (resolve, reject) => {
+    //         try {
+    //             const db = await init();
+    //             await db.collection('users').insertOne({username: username, passwordHash: password, points: 0, wins: 0});
+    //             let data = await db.collection('users').find({username})
+    //             let newUser = new User(data);
+    //             resolve(newUser);
+    //         } catch (err) {
+    //             console.warn(err);
+    //             reject('error creating user');
+    //         }
+    //     });
+    // }
+
+
 
     //update points, will have to change again
     updatePoints(points) {
