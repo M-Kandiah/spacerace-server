@@ -39,13 +39,15 @@ async function create(req, res) {
 
 async function checkLogin(req, res) {
   try {
-    const user = await Usermon.find({ username : req.body.username })
+    const userArr = await Usermon.find({ username : req.body.username })
+    const user = userArr[0]
     // const user = await User.findByUserName(req.body.username);
-    // console.log(usermon)
+    console.log(user)
     if (!user) {
       throw new Error("No user found");
     }
     const authed = await bcrypt.compare(req.body.password, user.passwordHash);
+    console.log(` is this right : ${authed} is authed`)
     if (authed) {
       const payload = { username: user.userName, id: user.userId };
       const sendToken = (err, token) => {
