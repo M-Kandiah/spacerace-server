@@ -61,6 +61,19 @@ class User {
 
 
 
+    static findByUserName(name) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const db = await init();
+                let userData = await db.collection('users').find({username: { $eq: name }}).toArray();
+                let user = userData[0]
+                resolve(user);           
+            } catch (err) {
+                reject("User not found");
+            }
+        })
+    };
+
     //update points, will have to change again
     updatePoints(points) {
         return new Promise(async (resolve, reject) => {

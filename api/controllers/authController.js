@@ -39,12 +39,11 @@ async function create(req, res) {
 
 async function checkLogin(req, res) {
   try {
-    const user = await User.findByUserName(req.body.userName);
+    const user = await User.findByUserName(req.body.username);
     if (!user) {
       throw new Error("No user found");
     }
     const authed = await bcrypt.compare(req.body.password, user.passwordHash);
-    console.log(authed)
     if (authed) {
       const payload = { username: user.userName, id: user.userId };
       const sendToken = (err, token) => {
