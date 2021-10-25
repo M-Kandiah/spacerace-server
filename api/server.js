@@ -10,7 +10,7 @@ const auth = require('./routes/authRoute');
 server.use('/auth', auth);
 
 const user = require('./routes/userRoute');
-server.use('/user', user);
+server.use('/users', user);
 
 server.get('/', (req, res) => {res.send("Welcome to SpaceRace!")}); //name change pls this is so lame
 
