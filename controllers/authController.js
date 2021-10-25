@@ -2,7 +2,6 @@ require("dotenv").config({ path: __dirname + '/./../.env' });
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const User = require("../models/users");
 const Usermon = require("../models/userMon")
 
 async function create(req, res) {
@@ -39,15 +38,13 @@ async function create(req, res) {
 
 async function checkLogin(req, res) {
   try {
-    const user = await Usermon.find({ username : req.body.username })
-    // const user = await User.findByUserName(req.body.username);
-    // console.log(usermon)
+    const user = await Usermon.find({ username : req.body.username })[0];
     if (!user) {
       throw new Error("No user found");
     }
     const authed = await bcrypt.compare(req.body.password, user.passwordHash);
     if (authed) {
-      const payload = { username: user.userName, id: user.userId };
+      const payload = { username: user.username, id: user.userId };
       const sendToken = (err, token) => {
         if (err) {
           throw new Error("Error in token generation");

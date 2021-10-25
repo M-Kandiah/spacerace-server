@@ -1,4 +1,3 @@
-const User = require('../models/users');
 const Usermon = require('../models/userMon')
 
 //get all users
