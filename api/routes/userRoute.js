@@ -3,8 +3,9 @@ const router = express.Router();
 
 const userController = require('../controllers/userController');
 
-router.get('/', userController.show);
-router.get('/:id',userController.showIndex);
-router.patch('/:id', userController.updateBadgeById);
+router.get('/', userController.index);
+router.get('/:id',userController.show);
+router.patch('/:id/points', userController.updatePoints);
+router.patch('/:id/wins', userController.updateWins);
 
 module.exports = router;

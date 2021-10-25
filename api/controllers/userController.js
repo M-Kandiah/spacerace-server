@@ -36,5 +36,5 @@ async function updateWins(req, res) {
     }
 };
 
-module.exports = router;
+module.exports = {index, show, updatePoints, updateWins}
 
