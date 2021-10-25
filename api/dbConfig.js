@@ -2,7 +2,7 @@ require('dotenv').config({path: __dirname + "./env"});
 const { MongoClient } = require('mongodb');
 const connectionUrl = process.env.DB_CONNECTION;
 
-const dbName = process.env.DB_NAME;
+const dbName = 'spacerace';
 
 const init = async () => {
     let client = await MongoClient.connect(connectionUrl);
