@@ -34,7 +34,7 @@ async function checkLogin(req, res) {
           token: "Bearer " + token,
         });
       };
-      jwt.sign(payload, process.env.SECRET, sendToken);
+      jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, sendToken);
     } else {
       throw new Error("User could not be authenticated");
     }

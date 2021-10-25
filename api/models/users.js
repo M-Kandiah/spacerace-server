@@ -46,7 +46,7 @@ class User {
         return new Promise(async (resolve, reject) => {
             try {
                 const db = await init();
-                await db.collection('users').insertOne({username, passwordHash});
+                await db.collection('users').insertOne({username: username, passwordHash: password, points: 0, wins: 0});
                 let data = await db.collection('users').find({username})
                 let newUser = new User(data);
                 resolve(newUser);
