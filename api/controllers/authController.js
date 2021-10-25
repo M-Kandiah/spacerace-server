@@ -39,7 +39,9 @@ async function create(req, res) {
 
 async function checkLogin(req, res) {
   try {
-    const user = await User.findByUserName(req.body.username);
+    const user = await Usermon.find({ username : req.body.username })
+    // const user = await User.findByUserName(req.body.username);
+    // console.log(usermon)
     if (!user) {
       throw new Error("No user found");
     }
