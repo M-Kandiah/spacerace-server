@@ -16,29 +16,17 @@ async function create(req, res) {
     })
 
     user.save()
-      .then((result) => res.send(result))
+      .then(() => res.status(201).json({ message: "User has been created successfully" }))
       .catch((err) => console.log(err))
-
-    res.status(201).json({ message: "User has been created successfully" });
   } catch (err) {
     res.status(500).json({ err });
   }
 }
 
-// async function create(req, res) {
-//   try {
-//       const salt = await bcrypt.genSalt();
-//       const hashed = await bcrypt.hash(req.body.password, salt);
-//       await User.create(req.body.username, hashed);
-//       res.status(201).json({ message: "User has been created successfully" });
-//   } catch (err) {
-//     res.status(500).json({ err });
-//   }
-// }
-
 async function checkLogin(req, res) {
   try {
-    const user = await Usermon.find({ username : req.body.username })[0];
+    const userArr = await Usermon.find({ username : req.body.username })
+    const user = userArr[0]
     if (!user) {
       throw new Error("No user found");
     }
