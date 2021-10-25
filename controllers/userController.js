@@ -28,20 +28,20 @@ async function show(req, res) {
 //update points
 async function updatePoints(req, res) {
     try {
-        const user = await Usermon.findByIdAndUpdate(req.params.id, {$inc : {points: req.body.points}});
+        const user = await Usermon.findByIdAndUpdate(req.params.id, { $inc: { points: req.body.points } });
         res.status(200).json(user);
     } catch (err) {
-        res.status(500).json({err});
+        res.status(500).json({ err });
     }
 };
 
 //update wins
 async function updateWins(req, res) {
     try {
-        const user = await Usermon.findByIdAndUpdate(req.params.id, {$inc : {wins: 1}})
+        const user = await Usermon.findByIdAndUpdate(req.params.id, { $inc: { wins: 1 } })
         res.status(200).json(user);
     } catch (err) {
-        res.status(500).json({err});
+        res.status(500).json({ err });
     }
 };
 

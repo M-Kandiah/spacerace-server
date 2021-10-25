@@ -17,10 +17,8 @@ async function create(req, res) {
     })
 
     user.save()
-      .then((result) => res.send(result))
+      .then((result) => res.status(201).json({ message: "User has been created successfully", result }))
       .catch((err) => console.log(err))
-
-    res.status(201).json({ message: "User has been created successfully" });
   } catch (err) {
     res.status(500).json({ err });
   }
