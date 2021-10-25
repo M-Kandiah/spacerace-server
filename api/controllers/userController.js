@@ -23,6 +23,8 @@ async function show(req, res) {
     }
 };
 
+
+
 //update points
 async function updatePoints(req, res) {
     try {
