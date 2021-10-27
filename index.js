@@ -20,6 +20,7 @@ io.on('connection', socket => {
 
       socket.on("start-game", (room, url) => {
         console.log(`now in start game`);
+        console.log(io.sockets.name)
         io.emit(`start`, room, url);
         
       });

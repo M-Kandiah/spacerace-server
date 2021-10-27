@@ -34,7 +34,7 @@ async function checkLogin(req, res) {
     }
     const authed = await bcrypt.compare(req.body.password, user.passwordHash);
     if (authed) {
-      const payload = { username: user.username, id: user.userId };
+      const payload = { username: user.username, id: user._id };
       const sendToken = (err, token) => {
         if (err) {
           throw new Error("Error in token generation");
