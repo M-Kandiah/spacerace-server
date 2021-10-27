@@ -18,10 +18,15 @@ io.on('connection', socket => {
         socket.to(roomId).emit(`joined-room`, roomId, user);
       });
 
-      socket.on("start-game", (roomId, url) => {
+      socket.on("start-game", (room, url) => {
         console.log(`now in start game`);
-        io.emit(`start`, roomId, url);
+        io.emit(`start`, room, url);
+        
       });
+
+      socket.on('sendData', (question,answers,correctAnswer) => {
+          io.emit('sent', question,answers,correctAnswer)
+      })
 
 })
 
