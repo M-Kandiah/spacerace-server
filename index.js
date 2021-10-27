@@ -6,7 +6,7 @@ const connectionUrl = process.env.CONNECTION_URL;
 const {instrument} = require('@socket.io/admin-ui')
 
 const server = require('http').createServer(app)
-const io = require('socket.io')(server, {cors: {origin:["http://localhost:3000","https://admin.socket.io"]} })
+const io = require('socket.io')(server, {cors: {origin:["http://localhost:3000","https://admin.socket.io","https://brainifyquiz.netlify.app/"]} })
 
 
 io.on('connection', socket => {
