@@ -6,23 +6,23 @@ const connectionUrl = process.env.CONNECTION_URL;
 const {instrument} = require('@socket.io/admin-ui')
 
 const server = require('http').createServer(app)
-const io = require('socket.io')(server, {cors: {origin:["http://localhost:3000","https://admin.socket.io","https://brainifyquiz.netlify.app/"]} })
+const io = require('socket.io')(server, {cors: {origin:["http://localhost:3000","https://admin.socket.io","https://brainifyquiz.netlify.app"]} })
 
 
 io.on('connection', socket => {
     
     socket.on("join-room", (roomId, user) => {
         console.log(`Server : Someone joined room ${roomId}`);
-        console.log(user)//
+        console.log(io.sockets.adapter.rooms)
+        console.log(user)
         socket.join(roomId);
-        socket.to(roomId).emit(`joined-room`, roomId, user);
+        io.in(roomId).emit("joined-room", roomId, user);
       });
 
       socket.on("start-game", (room, url) => {
-        console.log(`now in start game`);
-        console.log(io.sockets.name)
-        io.emit(`start`, room, url);
-        
+        console.log(`now in start-game`);
+        console.log(room.id)
+        io.in(`${room.id}`).emit(`start`, room, url);
       });
 
       socket.on('sendData', (question,answers,correctAnswer) => {
