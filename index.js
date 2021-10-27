@@ -21,8 +21,8 @@ io.on('connection', socket => {
 
       socket.on("start-game", (room, url) => {
         console.log(`now in start-game`);
-        console.log(room.id)
-        io.in(`${room.id}`).emit(`start`, room, url);
+        console.log(room)
+        io.in(room.name).emit(`start`, room, url);
       });
 
       socket.on('sendData', (question,answers,correctAnswer) => {
