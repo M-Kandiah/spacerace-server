@@ -15,6 +15,8 @@ async function create(req, res) {
       wins: 0,
     })
 
+    
+
     user.save()
       .then(() => res.status(201).json({ message: "User has been created successfully" }))
       .catch((err) => console.log(err))
