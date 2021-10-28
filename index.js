@@ -32,6 +32,8 @@ io.on('connection', socket => {
           io.emit('sent', question,answers,correctAnswer)
       })
 
+      socket
+
 })
 
 mongoose.connect(connectionUrl)

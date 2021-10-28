@@ -44,5 +44,14 @@ async function updateWins(req, res) {
     }
 };
 
-module.exports = { index, show, updatePoints, updateWins }
+async function resetPoints(req, res) {
+    try {
+        const user = await Usermon.findByIdAndUpdate(req.params.id, {$set: {points: 0}})
+        res.status(200).json(user)
+    } catch (err) {
+        res.status(500).json({ err });
+    }
+}
+
+module.exports = { index, show, updatePoints, updateWins, resetPoints }
 
