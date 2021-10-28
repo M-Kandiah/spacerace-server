@@ -33,6 +33,8 @@ io.on('connection', socket => {
       })
 
       socket.on('leave-room', (room) => {
+        users.removeUser(socket.id)
+        io.to(room).emit('updateUsersList', users.getUserList(room))
         socket.leave(room);
       })
 
